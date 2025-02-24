@@ -1,8 +1,9 @@
 {
     "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/"
-        }
+      {
+        "source": "/api/:path*",
+        "destination": "https://blog-website-rho-coral.vercel.app/api/:path*"
+      }
     ]
-}
+  }
+  
