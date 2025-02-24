@@ -19,10 +19,10 @@ import {
   RouteBlogUsers,
 } from "./helper/routeName";
 import Layout from "./Layouts/Layout";
-import Index from "./pages";
+import Index from "./pages/Index";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Profile from "./pages/profile";
+import Profile from "./pages/Profile";
 import AddCategory from "./pages/Category/AddCategory";
 import EditCategory from "./pages/Category/EditCategory";
 import CategoryDetails from "./pages/Category/CategoryDetails";
@@ -32,7 +32,6 @@ import EditBlogs from "./pages/Blog/EditBlogs";
 import BlogPage from "./pages/BlogPage";
 import CategoryBlog from "./pages/Blog/CategoryBlog";
 import SearchResult from "./pages/SearchResult";
-import Comment from "./components/Comment";
 import CommentDetails from "./pages/CommentDetails";
 import UserDetails from "./pages/UserDetails";
 import AuthRouteProtection from "./components/AuthRouteProtection";
