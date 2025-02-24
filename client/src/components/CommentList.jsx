@@ -2,7 +2,7 @@ import { useFetch } from "@/hooks/useFetch";
 import React from "react";
 import Loading from "./Loading";
 import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
-import UserIcon from "@/assets/userIcon.png";
+import UserIcon from "../assets/UserIcon.png";
 import moment from "moment";
 
 const CommentList = ({ blogid }) => {

@@ -21,7 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import UserIcon from "@/assets/userIcon.png";
+import UserIcon from "../assets/UserIcon.png";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { removeUser } from "@/redux/user/slice";
