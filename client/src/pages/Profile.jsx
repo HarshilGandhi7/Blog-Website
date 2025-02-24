@@ -18,7 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
 import { showToast } from "@/helper/showToast";
 import { useDispatch, useSelector } from "react-redux";
-import UserIcon from "@/assets/userIcon.png";
+import UserIcon from "../assets/UserIcon.png";
 import { Textarea } from "@/components/ui/textarea";
 import { useFetch } from "@/hooks/useFetch";
 import { setUser } from "@/redux/user/slice";
