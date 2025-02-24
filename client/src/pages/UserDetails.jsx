@@ -13,7 +13,7 @@ import {
 import Loading from "@/components/Loading";
 import { MdDelete } from "react-icons/md";
 import { showToast } from "@/helper/showToast";
-import UserIcon from "@/assets/userIcon.png";
+import UserIcon from "../assets/UserIcon.png";
 
 const UserDetails = () => {
   const [users, setUsers] = useState([]);
