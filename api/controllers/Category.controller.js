@@ -30,6 +30,15 @@ export const addCategory = async (req, res, next) => {
 
 export const showCategory = async (req, res, next) => {
   try {
+    const category = await Category.findById(req.params.categoryid);
+    if (!category) {
+      return next(handleErrors(404, "Category not found"));
+    }
+    res.status(200).json({
+      success: true,
+      category,
+    });
+
   } catch (error) {
     next(handleErrors(500, error.message));
   }
