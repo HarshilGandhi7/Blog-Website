@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import express from "express";
 import cookieParser from "cookie-parser";
-const session = require("express-session");
+import session from "express-session";
+import MongoStore from "connect-mongo";
 import cors from "cors";
 import AuthRoute from "./routes/AuthRoute.js";
 import UserRoute from "./routes/UserRoute.js";
@@ -10,6 +11,7 @@ import CategoryRoute from "./routes/CategoryRoute.js";
 import BlogRoute from "./routes/BlogRoute.js";
 import CommentRoute from "./routes/CommentRoute.js";
 import LikeRoute from "./routes/LikeRoute.js";
+
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 
@@ -20,18 +22,22 @@ const sessionConfig = {
   name: "appName",
   resave: false,
   saveUninitialized: false,
-  store: store,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    collectionName: 'sessions',
+  }),
   cookie: {
-    sameSite: "strict", 
+    sameSite: "None", // Set SameSite to None for cross-site cookies
+    secure: true, // Ensure cookies are only sent over HTTPS
   },
 };
 
 if (process.env.NODE_ENV === "production") {
-  app.set("trust proxy", 1); 
-  sessionConfig.cookie.secure = true; 
+  app.set("trust proxy", 1);
 }
 
 app.use(session(sessionConfig));
+
 // Middleware
 app.use(cookieParser());
 app.use(
@@ -43,7 +49,10 @@ app.use(
 app.use(express.json());
 
 mongoose
-  .connect(process.env.MONGO_URI, {})
+  .connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 30000, 
+    socketTimeoutMS: 45000, 
+  })
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -69,7 +78,7 @@ app.use((err, req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Api Works");
+  res.send("API Works");
 });
 
 // Start Server
